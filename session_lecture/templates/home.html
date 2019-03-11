@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>Hello {{the_name}}, this is your homepage</h1>
+    <h4>Football teams, in order of liked to most hated</h4>
+    {% for team in team_list %}
+        <p>{{team}}</p>
+    {% endfor %}
+</body>
+</html>
