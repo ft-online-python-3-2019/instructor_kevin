@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>All the pets!</h2>
+    <p>Most pets:{{ most_pets }}</p>
+    <p>Pets:{{ pets }}</p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Actions</th>
+        </tr>
+        {% for pet in most_pets %}
+        <tr>
+            <td>{{ pet['pet_id'] }}</td>
+            <td>{{ pet['name'] }}</td>
+            <td>{{ pet['type'] }}</td>
+            <td><a href="/pets/{{pet['pet_id']}}/edit">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% with messages = get_flashed_messages() %}
+    <!-- declare a variable called messages -->
+        {% if messages %}
+        <!-- check if there are any messages -->
+            {% for message in messages %}
+            <!-- loop through the messages -->
+                <p>{{message}}</p> <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h2>Add a new pet:</h2>
+    <form action="/add_pet" method="POST">
+        <p>Name: <input type="text" name="pet_name"></p>
+        <p>Type: <input type="text" name="type"></p>
+        <input type="submit" value="add">
+    </form>
+    
+</body>
+</html>
